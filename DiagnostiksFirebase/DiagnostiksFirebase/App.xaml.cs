@@ -13,7 +13,7 @@ namespace DiagnostiksFirebase
 		{
 			InitializeComponent();
 
-			MainPage = new DiagnostiksFirebase.MainPage();
+			MainPage = new NavigationPage(new DiagnostiksFirebase.MainPage());
 		}
 
 		protected override void OnStart ()

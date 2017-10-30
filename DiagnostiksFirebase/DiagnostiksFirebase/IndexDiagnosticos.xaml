@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:DiagnostiksFirebase"
-             x:Class="DiagnostiksFirebase.MainPage">
+             x:Class="DiagnostiksFirebase.IndexDiagnosticos">
     <ContentPage.Padding>
         <OnPlatform x:TypeArguments="Thickness"
                     iOS="0,20,0,0"
@@ -11,20 +10,19 @@
     </ContentPage.Padding>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="AñadirPaciente" />
+        <ToolbarItem Text="+" Clicked="AñadirDiagnostico" />
+        <ToolbarItem Text="-" Clicked="EliminarDiagnostico"></ToolbarItem>
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <ScrollView VerticalOptions="FillAndExpand">
-                <ListView ItemsSource="{Binding}" ItemSelected="VerPaciente">
+                <ListView x:Name="ListaDiagnosticos" ItemsSource="{Binding}" SelectedItem="EditarDiagnostico">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Nombre}" Detail="{Binding UltimoDiagnostico} ">
-                                <TextCell.ContextActions>
-                                    <MenuItem Text="Editar" CommandParameter="{Binding}" Clicked="EditarPaciente"></MenuItem>
-                                </TextCell.ContextActions>
-                            </TextCell>
+                            <ViewCell>
+                                <Label Text="{Binding}"></Label>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
